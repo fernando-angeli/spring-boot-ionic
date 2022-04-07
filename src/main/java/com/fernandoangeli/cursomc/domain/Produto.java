@@ -1,15 +1,11 @@
 package com.fernandoangeli.cursomc.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Getter
 @Setter
@@ -29,6 +25,9 @@ public class Produto {
             inverseJoinColumns = @JoinColumn(name = "categoria_id")
     )
     private List<Categoria> categorias = new ArrayList<>();
+    @OneToMany
+    private Set<ItemPedido> itens = new HashSet<>();
+
 
     public Produto(){
     }
@@ -37,6 +36,14 @@ public class Produto {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
+    }
+
+    public List<Pedido> getPedidos(){
+        List<Pedido> lista = new ArrayList<>();
+        for(ItemPedido x : itens){
+            lista.add(x.getPedido());
+        }
+        return lista;
     }
 
     @Override
