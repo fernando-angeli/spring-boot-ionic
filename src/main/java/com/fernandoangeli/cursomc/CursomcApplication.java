@@ -14,7 +14,6 @@ import java.util.Arrays;
 @SpringBootApplication
 public class CursomcApplication implements CommandLineRunner {
 
-
 	@Autowired
 	CategoriaRepository categoriaRepository;
 

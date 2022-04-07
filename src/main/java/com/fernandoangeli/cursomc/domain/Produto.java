@@ -1,6 +1,7 @@
 package com.fernandoangeli.cursomc.domain;
 
-import com.fernandoangeli.cursomc.repository.CategoriaRepository;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,9 +14,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @Entity
-public class Produto implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,8 +22,9 @@ public class Produto implements Serializable {
     private String nome;
     private Double preco;
 
+    @JsonBackReference
     @ManyToMany
-    @JoinTable(name = "produto_categoria",
+    @JoinTable(name = "PRODUTO_CATEGORIA",
             joinColumns = @JoinColumn(name = "produto_id"),
             inverseJoinColumns = @JoinColumn(name = "categoria_id")
     )
