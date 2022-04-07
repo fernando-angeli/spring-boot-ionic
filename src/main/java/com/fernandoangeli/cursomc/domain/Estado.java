@@ -1,5 +1,6 @@
 package com.fernandoangeli.cursomc.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +19,7 @@ public class Estado {
     private Integer id;
     private String nome;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "estado")
     private List<Cidade> cidades = new ArrayList<>();
 
