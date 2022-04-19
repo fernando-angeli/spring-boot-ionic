@@ -1,5 +1,6 @@
 package com.fernandoangeli.cursomc.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fernandoangeli.cursomc.domain.enums.EstadoPagamento;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +16,10 @@ public abstract class Pagamento {
 
     @Id
     private Integer id;
+
     private Integer estado;
+
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "pedido_id")
     @MapsId

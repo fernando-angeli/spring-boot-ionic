@@ -1,6 +1,6 @@
 package com.fernandoangeli.cursomc.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,10 +20,12 @@ public class Endereco {
     private String complemento;
     private String bairro;
     private String cep;
-    @JsonBackReference
+
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
+
     @ManyToOne
     @JoinColumn(name = "cidade_id")
     private Cidade cidade;

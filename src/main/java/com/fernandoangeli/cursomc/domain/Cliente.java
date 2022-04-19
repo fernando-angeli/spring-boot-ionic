@@ -1,6 +1,6 @@
 package com.fernandoangeli.cursomc.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fernandoangeli.cursomc.domain.enums.TipoCliente;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,16 +16,20 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String nome;
     private String email;
     private String cpfOuCnpj;
     private Integer tipo;
-    @JsonManagedReference
+
     @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
+
     @ElementCollection
     @CollectionTable(name="TELEFONE")
     private Set<String> telefones = new HashSet<>();
+
+    @JsonIgnore
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos = new ArrayList<>();
 

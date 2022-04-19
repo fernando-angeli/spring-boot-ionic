@@ -1,6 +1,5 @@
 package com.fernandoangeli.cursomc.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +17,6 @@ public class Cidade {
 
     private String nome;
 
-    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "estado_id")
     private Estado estado;
