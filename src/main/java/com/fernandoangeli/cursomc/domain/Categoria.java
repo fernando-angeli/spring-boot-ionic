@@ -19,7 +19,6 @@ public class Categoria {
     private String nome;
 
     @ManyToMany(mappedBy = "categorias")
-    @JsonIgnore
     private List<Produto> produtos = new ArrayList<>();
 
     public Categoria(){
