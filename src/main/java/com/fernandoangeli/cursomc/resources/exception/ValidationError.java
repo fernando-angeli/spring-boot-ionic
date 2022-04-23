@@ -9,13 +9,13 @@ import java.util.List;
 @Setter
 public class ValidationError extends StandardError{
 
-    private List<FildMessage> errors = new ArrayList<>();
+    private List<FieldMessage> errors = new ArrayList<>();
 
     public ValidationError(Integer status, String msg, Long timeStamp) {
         super(status, msg, timeStamp);
     }
 
     public void addError(String fieldName, String message){
-        errors.add(new FildMessage(fieldName, message));
+        errors.add(new FieldMessage(fieldName, message));
     }
 }

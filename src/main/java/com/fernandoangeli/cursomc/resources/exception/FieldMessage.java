@@ -5,16 +5,16 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class FildMessage {
+public class FieldMessage {
 
-    private String fildName;
+    private String fieldName;
     private String message;
 
-    public FildMessage(){
+    public FieldMessage(){
     }
 
-    public FildMessage(String fildName, String message) {
-        this.fildName = fildName;
+    public FieldMessage(String fieldName, String message) {
+        this.fieldName = fieldName;
         this.message = message;
     }
 }
