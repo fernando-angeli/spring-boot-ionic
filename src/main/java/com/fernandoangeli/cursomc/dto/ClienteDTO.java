@@ -1,6 +1,7 @@
 package com.fernandoangeli.cursomc.dto;
 
 import com.fernandoangeli.cursomc.domain.Cliente;
+import com.fernandoangeli.cursomc.services.validation.ClienteUpdate;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
@@ -10,6 +11,7 @@ import javax.validation.constraints.NotEmpty;
 
 @Getter
 @Setter
+@ClienteUpdate
 public class ClienteDTO {
 
     private Integer id;
