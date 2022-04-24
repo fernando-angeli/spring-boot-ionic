@@ -7,10 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 import static javax.persistence.CascadeType.ALL;
 
@@ -50,6 +47,14 @@ public class Pedido implements Serializable {
         this.instante = instante;
         this.cliente = cliente;
         this.enderecoDeEntrega = enderecoDeEntrega;
+    }
+
+    public double getTotal(){
+        double soma = 0;
+        for(ItemPedido ip: itens){
+            soma += ip.getSubTotal();
+        }
+        return soma;
     }
 
     @Override
