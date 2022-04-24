@@ -1,6 +1,7 @@
 package com.fernandoangeli.cursomc.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fernandoangeli.cursomc.domain.enums.EstadoPagamento;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
+@JsonTypeName("pagamentoComBoleto")
 public class PagamentoComBoleto extends Pagamento{
 
     @JsonFormat(pattern = "dd/MM/yyyy")
