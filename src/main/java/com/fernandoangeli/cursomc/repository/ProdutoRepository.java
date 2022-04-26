@@ -1,6 +1,5 @@
 package com.fernandoangeli.cursomc.repository;
 
-
 import com.fernandoangeli.cursomc.domain.Categoria;
 import com.fernandoangeli.cursomc.domain.Produto;
 import org.springframework.data.domain.Page;
