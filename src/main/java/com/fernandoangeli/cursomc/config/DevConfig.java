@@ -1,6 +1,8 @@
 package com.fernandoangeli.cursomc.config;
 
 import com.fernandoangeli.cursomc.services.DBService;
+import com.fernandoangeli.cursomc.services.EmailService;
+import com.fernandoangeli.cursomc.services.SmtpEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -21,11 +23,16 @@ public class DevConfig {
 
     @Bean
     public boolean instantiateDatabase() throws ParseException {
-        if(!"create".equals(strategy)){
+        if(!"create-drop".equals(strategy)){
             return false;
         }
         dbService.instantiateTestDatabase();
         return true;
+    }
+
+    @Bean
+    public EmailService emailService(){
+        return new SmtpEmailService();
     }
 
 }

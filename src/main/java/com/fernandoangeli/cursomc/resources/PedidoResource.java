@@ -1,8 +1,6 @@
 package com.fernandoangeli.cursomc.resources;
 
-import com.fernandoangeli.cursomc.domain.Categoria;
 import com.fernandoangeli.cursomc.domain.Pedido;
-import com.fernandoangeli.cursomc.dto.CategoriaDTO;
 import com.fernandoangeli.cursomc.services.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
