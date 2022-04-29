@@ -8,8 +8,13 @@ import com.fernandoangeli.cursomc.domain.enums.EstadoPagamento;
 import com.fernandoangeli.cursomc.repository.ItemPedidoRepository;
 import com.fernandoangeli.cursomc.repository.PagamentoRepository;
 import com.fernandoangeli.cursomc.repository.PedidoRepository;
+import com.fernandoangeli.cursomc.security.UserSS;
+import com.fernandoangeli.cursomc.services.exceptions.AuthorizationException;
 import com.fernandoangeli.cursomc.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -68,4 +73,13 @@ public class PedidoService {
         return obj;
     }
 
+    public Page<Pedido> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
+        UserSS user = UserService.authenticated();
+        if(user == null){
+            throw new AuthorizationException("Acesso negado.");
+        }
+        PageRequest pageRequest = PageRequest.of(page, linesPerPage, Sort.Direction.valueOf(direction), orderBy);
+        Cliente cliente = clienteService.find(user.getId());
+        return repo.findByCliente(cliente, pageRequest);
+    }
 }
