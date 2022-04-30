@@ -45,6 +45,8 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos = new ArrayList<>();
 
+    private String imagemUrl;
+
     public Cliente(){
         addPerfil(Perfil.CLIENTE);
     }
@@ -87,4 +89,5 @@ public class Cliente {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }
